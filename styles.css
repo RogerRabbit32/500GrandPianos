@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'HandWriting';
+    src: url('media/IndieFlower-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 body {
     margin: 0;
     display: flex;
@@ -110,4 +118,29 @@ body {
 .card.cross-card.bottom-right .back::before {
     top: 90%;
     left: 90%;
+}
+
+.back-images, .title {
+    position: fixed;
+}
+
+.tree {
+    top: 30px;
+    left: 80px;
+    height: 300px;
+    width: 250px;
+
+}
+
+.piano {
+    top: 50px;
+    right: 50px;
+    height: 250px;
+    width: 250px;
+}
+
+.title {
+    top: 10px;
+    font-size: 110px;
+    font-family: 'HandWriting', sans-serif;
 }
