@@ -1,22 +1,30 @@
-// script.js
-const wordsList = [
-    { 1: "Apple", 2: "Banana", 3: "Cherry", 4: "Date", 5: "Fig", 6: "Grapes", 7: "Honeydew" },
-    { 1: "Orange", 2: "Pear", 3: "Quince", 4: "Raspberry", 5: "Strawberry", 6: "Tomato", 7: "Uva" },
-    // Add more sets of words as needed
-];
+import wordsList from './data.js';
+
 
 let currentIndex = 0;
 
 function createCard(number) {
     const card = document.createElement('div');
     card.classList.add('card');
+
+    const cardInfo = wordsList[currentIndex][number];
+    const hasCross = cardInfo.hasCross;
+    const content = hasCross ? '&#10006;' : cardInfo.content;
+
     card.innerHTML = `
     <div class="front">${number}</div>
-    <div class="back">${wordsList[currentIndex][number]}</div>
+    <div class="back">${content}</div>
   `;
+
     card.addEventListener('click', function () {
         this.classList.toggle('flipped');
     });
+
+    if (hasCross) {
+        card.classList.add('cross-card');
+        card.classList.add(cardInfo.crossPosition); // Add a class for cross position
+    }
+
     return card;
 }
 
@@ -29,9 +37,15 @@ function renderCards() {
     }
 }
 
-function changeWords() {
+window.changeWords = function () {
+    flipAllCardsBack(); // Flip all cards back first
     currentIndex = (currentIndex + 1) % wordsList.length;
     renderCards();
+}
+
+function flipAllCardsBack() {
+    const flippedCards = document.querySelectorAll('.card.flipped');
+    flippedCards.forEach(card => card.classList.remove('flipped'));
 }
 
 renderCards();

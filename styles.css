@@ -26,7 +26,8 @@ body {
     cursor: pointer;
     perspective: 1000px;
     transform-style: preserve-3d;
-    transition: transform 0.5s;
+    /*transition: transform 0.5s;*/
+    transition: transform 0.5s, background-color 0.5s, color 0.5s; /* Added color transition */
 }
 
 .card .front {
@@ -76,4 +77,37 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
+.card.cross-card .back {
+    background-color: red;
+    position: relative;
+}
 
+.card.cross-card .back::before {
+    /*content: '&#10006;';*/
+    font-size: 24px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card.cross-card.top-left .back::before {
+    top: 10%;
+    left: 10%;
+}
+
+.card.cross-card.top-right .back::before {
+    top: 10%;
+    left: 90%;
+}
+
+.card.cross-card.bottom-left .back::before {
+    top: 90%;
+    left: 10%;
+}
+
+.card.cross-card.bottom-right .back::before {
+    top: 90%;
+    left: 90%;
+}
