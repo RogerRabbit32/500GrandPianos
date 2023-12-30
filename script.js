@@ -37,15 +37,15 @@ function renderCards() {
     }
 }
 
+function flipAllCardsBack() {
+    const flippedCards = document.querySelectorAll('.card.flipped');
+    flippedCards.forEach(card => card.classList.remove('flipped'));
+}
+
 window.changeWords = function () {
     flipAllCardsBack(); // Flip all cards back first
     currentIndex = (currentIndex + 1) % wordsList.length;
     renderCards();
-}
-
-function flipAllCardsBack() {
-    const flippedCards = document.querySelectorAll('.card.flipped');
-    flippedCards.forEach(card => card.classList.remove('flipped'));
 }
 
 renderCards();
